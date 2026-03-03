@@ -1,0 +1,92 @@
+/* ===== HEADER ===== */
+
+.buy-header {
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.buy-header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.buy-header p {
+  color: #666;
+}
+
+/* ===== SECTION ===== */
+
+.buy-section {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px 80px;
+}
+
+/* ===== FORM ===== */
+
+.buy-form {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.buy-form h2 {
+  margin-bottom: 20px;
+}
+
+/* ROWS */
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* INPUTS */
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+/* BUTTON */
+
+.buy-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buy-btn:hover {
+  background: #222;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  .form-row {
+    flex-direction: column;
+  }
+
+}

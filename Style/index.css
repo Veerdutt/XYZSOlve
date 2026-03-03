@@ -1,0 +1,637 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Roboto;
+    background-color: whitesmoke;
+}
+
+nav {
+    padding: 20px;
+    height: 60px;
+    top: 0;
+    background-color: white;
+    display: flex;
+    position: sticky;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid rgb(209, 209, 209);
+    z-index: 1;
+}
+
+nav .logo, nav .logo a {
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    font-weight: 700;
+    text-decoration: none;
+    color: black ;
+}
+
+nav .logo_img{
+    width: 50px;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li,
+nav ul a {
+    text-decoration: none;
+    color: black;
+    list-style: none;
+    font-weight: 500;
+}
+nav button{
+    border: none;
+}
+
+.nav-btn {
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(90deg, #1e40af, #3730a3);
+  transform: translateY(-1px);
+}
+/* another design of nav button */
+/* .nav-cta {
+  background: black;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.nav-cta:hover {
+  background: #222;
+} */
+
+.home {
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 64vw;
+    flex-direction: column;
+}
+
+.hero {
+    line-height: 1;
+    font-size: 63px;
+    width: 56vw;
+    text-align: center;
+    text-wrap: inherit;
+    font-weight: 400;
+    margin: 30px;
+    background: radial-gradient(circle at top, #eef2ff 30%, whitesmoke 75%);
+}
+
+main section span {
+    display: block;
+    font-size: 63px;
+    font-weight: 400;
+}
+
+main .underWeBuild {
+    font-size: 18px;
+    width: 48vw;
+    text-align: center;
+    color: gray;
+    margin-bottom: 50px;
+}
+
+main .buttons_2 {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+main .buttons_2 button  {
+    padding: 5px;
+    width: 155px;
+    border-radius: 6px;
+    border: 1px solid rgb(209, 209, 209);
+    transition: transform 0.3s ease;
+}
+
+
+main .first_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+main .buttons_2 button:hover {
+    transform: translate(-3px);
+}
+
+main .first_button,
+main .buttons_2 .first_button a {
+    background-color: black;
+    color: white;
+}
+
+main .second_button {
+    background: none;
+}
+
+.buttons_2 .second_button:hover {
+    background-color: #00000017;
+}
+
+
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 2px solid rgb(209, 209, 209);
+    border-radius: 8px;
+    padding: 30px;
+    width: 250px;
+    height: 250px;
+    line-height: 50px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 1);
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.ourServices {
+    padding: 60px 0;
+}
+
+.services {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.services p {
+    font-size: 17px;
+    margin: auto;
+    width: 41vw;
+    text-wrap: auto;
+    margin-bottom: 20px;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(25% - 40px);
+    /* Four cards per row on large screens */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.icon-placeholder {
+    font-size: 2rem;
+    color: #007bff;
+    /* Example color, adjust as needed */
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+    color: #666;
+    flex-grow: 1;
+    /* Ensures cards have equal height if content varies */
+}
+
+.service-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.service-card li {
+    font-size: 0.85rem;
+    color: #444;
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.service-card li::before {
+    content: '•';
+    /* Custom bullet point */
+    position: absolute;
+    left: 0;
+    color: #007bff;
+    /* Bullet color */
+}
+
+.about-container {
+    display: flex;
+    gap: 20px;
+    padding: 60px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.about-in {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.about-first {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    gap: 20px;
+}
+
+.about-first h2 {
+    font-weight: 600;
+    font-size: 3.2em;
+}
+
+.about-second {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    gap: 20px;
+}
+
+.about-second h3 {
+    font-weight: 500;
+    font-size: medium;
+}
+
+.about-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+}
+
+.ourPortfolio {
+    padding: 60px 0;
+}
+
+.portfolio {
+    width: 350px;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-contain {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 40px;
+    margin: 0px 100px;
+    align-items: center;
+}
+
+.pot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-img:hover {
+    transform: scale(1.05);
+}
+
+.portfolio-content {
+    padding: 20px;
+}
+
+.badge {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.portfolio-content h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.portfolio-content p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.tags span {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #fafafa;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+.btn-main {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid rgb(209, 209, 209);
+    text-decoration: none;
+}
+
+.buttons a:hover {
+    background-color: #00000017;
+}
+
+.portfolio-content .btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 5px 0;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.primary,
+.secondary {
+    border: 1px solid #ddd;
+    color: #000;
+}
+
+/* ===== ACTION CTA ABOVE FOOTER ===== */
+
+.action-cta {
+  background: linear-gradient(90deg, #05050f, #1a1a2e, #05050f);
+  color: white;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.action-cta h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.action-cta p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 35px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* BUTTON CONTAINER */
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* CONTACT BUTTON */
+
+.btn-contact {
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-contact:hover {
+  background: white;
+  color: black;
+}
+
+/* BUY SERVICE BUTTON */
+
+.btn-buy {
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-buy:hover {
+  background: #ddd;
+  transform: translateY(-2px);
+}
+
+footer{
+    background-color: #030213;
+    color: white;
+}
+
+.footer-content{
+    margin: 0 140px;
+    padding: 30px;
+}
+.footer-xyz{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+}
+
+footer ul li, footer ul li a, footer p, footer a{
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.line{
+    border: 1px solid #666;
+    margin: 35px 0;
+}
+
+.links{
+    display: flex;
+    gap: 10px;
+}
+.grid4{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 55px;
+}
+.grid4 h4{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.grid4 p{
+    font-size: 14px;
+    width: 400px;
+}
+.Quick-links{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Quick-links ul{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.Quick-links h3{
+    font-weight:400;
+}
+
+.footer-contact{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.footer-contact h3{
+  font-weight:400;
+}
+
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  color:#fff;
+}
+
+.contact-item i{
+  width:18px;
+  text-align:center;
+  color:#aaa;
+}
+.copyrights{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.copyrights a{
+    margin-right: 10px;
+        font-size: 13px;
+    font-weight: 600;
+}
+
+.copyrights p{
+        font-size: 12px;
+    font-weight: 600;
+}

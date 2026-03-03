@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | XYZSOlve</title>
+  <link rel="stylesheet" href="Style/index.css">
+  <link rel="stylesheet" href="Style/signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <!-- ===== SIGN UP WRAPPER ===== -->
+  <section class="auth-wrapper">
+
+    <div class="auth-left">
+      <h1>Join XYZSOlve</h1>
+      <p>
+        Create your account to start exploring professional
+        web solutions and manage your projects easily.
+      </p>
+
+      <ul>
+        <li><i class="fas fa-check"></i> Modern Web Platform</li>
+        <li><i class="fas fa-check"></i> Secure User Accounts</li>
+        <li><i class="fas fa-check"></i> Clean & Responsive UI</li>
+      </ul>
+
+      <a href="index.html" class="back-home">
+        ← Back to Home
+      </a>
+    </div>
+    <div class="auth-right">
+      <div class="auth-card">
+
+        <h2>Create Account</h2>
+        <p class="subtitle">Fill in your details to get started</p>
+
+        <form id="signupForm">
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-group password-group">
+            <label>Password</label>
+            <input type="password" id="signupPassword" placeholder="Create password" required>
+          </div>
+
+          <div class="form-group password-group">
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+          </div>
+
+          <div class="form-options">
+            <label>
+              <input type="checkbox" required>
+              I agree to the Terms & Privacy Policy
+            </label>
+          </div>
+
+          <button type="submit" class="auth-btn">
+            Create Account
+          </button>
+
+          <p class="switch-text">
+            Already have an account?
+            <a href="signin.html">Sign In</a>
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+
+  </section>
