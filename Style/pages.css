@@ -1,0 +1,52 @@
+.page-shell {
+  max-width: 1000px;
+  margin: 120px auto 80px;
+  padding: 0 20px;
+  color: #e8eefc;
+}
+
+.page-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.page-card h1,
+.page-card h2 {
+  margin-top: 0;
+}
+
+.page-card p,
+.page-card li {
+  line-height: 1.7;
+  color: #c8d4f0;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.price {
+  font-size: 1.8rem;
+  color: #82d4ff;
+  font-weight: 700;
+}
+
+.primary-link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #3f82ff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.notice {
+  border-left: 4px solid #82d4ff;
+  padding-left: 12px;
+}
