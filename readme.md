@@ -41,7 +41,7 @@ index.html
 about.html  
 → Company introduction and team members section.
 
-service.html  
+request.html  
 → Service request form where users select a service.
 
 review.html  
@@ -53,20 +53,8 @@ checkout.html
 confirmation.html  
 → Order confirmation page.
 
-contactus.html  
+contact.html  
 → Dedicated contact page for customer queries.
-
-pricing.html  
-→ Public package and pricing comparison page.
-
-dashboard.html  
-→ Client area for milestone and invoice tracking.
-
-forgot-password.html  
-→ Account recovery form.
-
-privacy-policy.html / terms-of-service.html / cookie-policy.html  
-→ Legal and compliance information pages.
 
 ---
 
