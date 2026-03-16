@@ -1,72 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In | XYZSOlve</title>
-  <link rel="stylesheet" href="Style/index.css">
-  <link rel="stylesheet" href="Style/signin.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XYZSOlve Login</title>
+
+<link rel="stylesheet" href="Style/signin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 </head>
+
 <body>
 
-  <!-- ===== SIGN IN WRAPPER ===== -->
-  <section class="auth-wrapper">
+<div class="container" id="container">
 
-    <div class="auth-left">
-      <h1>Welcome Back</h1>
-      <p>
-        Sign in to access your dashboard, manage projects,
-        and continue building with XYZSOlve.
-      </p>
+<div class="form-container sign-up">
+<form>
 
-      <ul>
-        <li><i class="fas fa-check"></i> Professional Web Solutions</li>
-        <li><i class="fas fa-check"></i> Secure User Access</li>
-        <li><i class="fas fa-check"></i> Modern UI Experience</li>
-      </ul>
+<h1>Create Account</h1>
 
-      <a href="index.html" class="back-home">
-        ← Back to Home
-      </a>
-    </div>
+<div class="social-icons">
+<a href="#"><i class="fa-brands fa-google"></i></a>
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#"><i class="fa-brands fa-github"></i></a>
+<a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+</div>
 
-    <div class="auth-right">
-      <div class="auth-card">
+<span>or use your email for registration</span>
 
-        <h2>Sign In</h2>
-        <p class="subtitle">Please enter your credentials</p>
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
 
-        <form>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="you@example.com" required>
-          </div>
+<button>Sign Up</button>
 
-          <div class="form-group password-group">
-            <label>Password</label>
-            <input type="password" id="password" placeholder="Enter password" required>
-          </div>
+</form>
+</div>
 
-          <div class="form-options">
-            <label>
-              <input type="checkbox"> Remember me
-            </label>
-            <a href="#">Forgot password?</a>
-          </div>
 
-          <button type="submit" class="auth-btn">
-            Sign In
-          </button>
+<div class="form-container sign-in">
+<form>
 
-          <p class="switch-text">
-            Don’t have an account?
-            <a href="signup.html">Create one</a>
-          </p>
-        </form>
+<h1>Sign In</h1>
 
-      </div>
-    </div>
+<div class="social-icons">
+<a href="#"><i class="fa-brands fa-google"></i></a>
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#"><i class="fa-brands fa-github"></i></a>
+<a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+</div>
 
-  </section>
+<span>or use your email password</span>
+
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+
+<a href="#">Forgot your password?</a>
+
+<button>Sign In</button>
+
+</form>
+</div>
+
+
+<div class="toggle-container">
+<div class="toggle">
+
+<div class="toggle-panel toggle-left">
+<h1>Welcome Back!</h1>
+<p>Enter your personal details to use all features</p>
+<button class="hidden" id="login">Sign In</button>
+</div>
+
+<div class="toggle-panel toggle-right">
+<h1>Hello, Friend!</h1>
+<p>Register with your personal details to use all features</p>
+<button class="hidden" id="register">Sign Up</button>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+const container = document.getElementById('container');
+const registerBtn = document.getElementById('register');
+const loginBtn = document.getElementById('login');
+
+registerBtn.addEventListener('click', () => {
+container.classList.add("active");
+});
+
+loginBtn.addEventListener('click', () => {
+container.classList.remove("active");
+});
+
+</script>
+
+</body>
+</html>
