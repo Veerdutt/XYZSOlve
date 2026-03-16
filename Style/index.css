@@ -9,68 +9,94 @@ html {
 }
 
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Roboto;
-    background-color: whitesmoke;
-}
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
 
+background-image:
+linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+
+background-size:50px 50px;
+
+z-index:-2;
+}
 nav {
-    padding: 20px;
-    height: 60px;
-    top: 0;
-    background-color: white;
+    padding: 18px 40px;
+    height: 70px;
+    background: white;
+    z-index: 1;
     display: flex;
     position: sticky;
+    top: 0;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 2px solid rgb(209, 209, 209);
-    z-index: 1;
+    border-bottom: 1px solid #e5e7eb;
+    backdrop-filter: blur(10px);
 }
 
-nav .logo, nav .logo a {
+nav .logo,
+nav .logo a {
     display: flex;
     align-items: center;
     font-size: x-large;
     font-weight: 700;
     text-decoration: none;
-    color: black ;
+    color: black;
 }
 
-nav .logo_img{
+nav .logo_img {
     width: 50px;
 }
 
 nav ul {
     display: flex;
-    gap: 30px;
+    gap: 35px;
 }
 
-nav ul li,
 nav ul a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul a:hover {
+    color: #4f46e5;
+}
+
+
+nav ul li {
     text-decoration: none;
     color: black;
     list-style: none;
     font-weight: 500;
 }
-nav button{
+
+nav button {
     border: none;
 }
 
 .nav-btn {
-  background: linear-gradient(90deg, #2563eb, #4f46e5);
-  color: white;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s ease;
-  white-space: nowrap;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none;
+
 }
 
 .nav-btn:hover {
-  background: linear-gradient(90deg, #1e40af, #3730a3);
-  transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
+
 /* another design of nav button */
 /* .nav-cta {
   background: black;
@@ -87,30 +113,46 @@ nav button{
 } */
 
 .home {
-    padding: 60px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
     width: 64vw;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
+
+
+
 .hero {
-    line-height: 1;
-    font-size: 63px;
-    width: 56vw;
+    line-height: 1.1;
+    font-size: 64px;
+    width: 60vw;
     text-align: center;
-    text-wrap: inherit;
-    font-weight: 400;
-    margin: 30px;
-    background: radial-gradient(circle at top, #eef2ff 30%, whitesmoke 75%);
+    font-weight: 700;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.hero span {
+    color: #4f46e5;
 }
 
 main section span {
     display: block;
     font-size: 63px;
     font-weight: 400;
+}
+
+.btn-main {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 main .underWeBuild {
@@ -127,7 +169,7 @@ main .buttons_2 {
     margin-bottom: 20px;
 }
 
-main .buttons_2 button  {
+main .buttons_2 button {
     padding: 5px;
     width: 155px;
     border-radius: 6px;
@@ -173,19 +215,18 @@ main .second_button {
 }
 
 .card {
-    background-color: #ffffff;
-    border: 2px solid rgb(209, 209, 209);
-    border-radius: 8px;
+    background: white;
+    border-radius: 12px;
     padding: 30px;
-    width: 250px;
-    height: 250px;
-    line-height: 50px;
+    width: 260px;
     text-align: center;
-    transition: box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+    transition: 0.3s;
 }
 
 .card:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 1);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
@@ -242,17 +283,17 @@ main .second_button {
 }
 
 .service-card {
-    background-color: #fff;
-    border-radius: 8px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 25px;
     flex: 1 1 calc(25% - 40px);
-    /* Four cards per row on large screens */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    transition: transform 0.3s ease;
+    transition: 0.3s;
 }
 
 .service-card:hover {
@@ -303,52 +344,93 @@ main .second_button {
 }
 
 .about-container {
+    padding: 100px 0;
+    
     display: flex;
-    gap: 20px;
-    padding: 60px 0;
-    flex-wrap: wrap;
     justify-content: center;
-    flex-direction: column;
-
 }
 
 .about-in {
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    gap: 60px;
+    align-items: flex-start;
+    max-width: 1100px;
 }
 
 .about-first {
+    flex: 1;
     display: flex;
-    flex-wrap: wrap;
-    width: 500px;
+    flex-direction: column;
     gap: 20px;
 }
 
 .about-first h2 {
-    font-weight: 600;
-    font-size: 3.2em;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
+.about-first p {
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.about-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 26px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.about-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Right Side Cards */
+
 .about-second {
+    flex: 1;
     display: flex;
-    flex-wrap: wrap;
-    width: 500px;
+    flex-direction: column;
     gap: 20px;
 }
 
-.about-second h3 {
-    font-weight: 500;
-    font-size: medium;
-}
-
 .about-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-    border: 1px solid rgb(209, 209, 209);
-    border-radius: 10px;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.about-card i {
+    font-size: 22px;
+    color: #4f46e5;
+    margin-bottom: 5px;
+}
+
+.about-card h3 {
+    font-size: 18px;
+}
+
+.about-card p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
 .ourPortfolio {
@@ -357,10 +439,16 @@ main .second_button {
 
 .portfolio {
     width: 350px;
-    background: #ffffff;
+    background: white;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: 0.3s;
+}
+
+.portfolio:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .portfolio-contain {
@@ -436,12 +524,7 @@ main .second_button {
     display: flex;
     gap: 10px;
 }
-.btn-main {
-    padding: 10px 20px;
-    border-radius: 6px;
-    border: 1px solid rgb(209, 209, 209);
-    text-decoration: none;
-}
+
 
 .buttons a:hover {
     background-color: #00000017;
@@ -467,89 +550,98 @@ main .second_button {
     color: #000;
 }
 
-/* ===== ACTION CTA ABOVE FOOTER ===== */
 
 .action-cta {
-  background: linear-gradient(90deg, #05050f, #1a1a2e, #05050f);
-  color: white;
-  text-align: center;
-  padding: 70px 20px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
 }
 
+
 .action-cta h2 {
-  font-size: 36px;
-  margin-bottom: 15px;
+    font-size: 36px;
+    margin-bottom: 15px;
 }
 
 .action-cta p {
-  font-size: 16px;
-  color: #ccc;
-  margin-bottom: 35px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 35px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* BUTTON CONTAINER */
 
 .action-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-/* CONTACT BUTTON */
+.action-buttons a {
+    transition: 0.3s;
+}
+
+.action-buttons a:hover {
+    transform: translateY(-3px);
+}
+
 
 .btn-contact {
-  padding: 12px 28px;
-  border-radius: 8px;
-  border: 2px solid white;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s ease;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
 
 .btn-contact:hover {
-  background: white;
-  color: black;
+    background: white;
+    color: black;
 }
 
-/* BUY SERVICE BUTTON */
 
 .btn-buy {
-  padding: 12px 28px;
-  border-radius: 8px;
-  background: white;
-  color: black;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s ease;
+    padding: 12px 28px;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
 
 .btn-buy:hover {
-  background: #ddd;
-  transform: translateY(-2px);
+    background: #ddd;
+    transform: translateY(-2px);
 }
 
-footer{
+footer {
     background-color: #030213;
     color: white;
 }
 
-.footer-content{
+.footer-content {
     margin: 0 140px;
     padding: 30px;
 }
-.footer-xyz{
+
+.footer-xyz {
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 500px;
 }
 
-footer ul li, footer ul li a, footer p, footer a{
+footer ul li,
+footer ul li a,
+footer p,
+footer a {
     list-style: none;
     text-decoration: none;
     color: #fff;
@@ -557,81 +649,269 @@ footer ul li, footer ul li a, footer p, footer a{
     font-size: 14px;
 }
 
-.line{
+.line {
     border: 1px solid #666;
     margin: 35px 0;
 }
 
-.links{
+.links {
     display: flex;
     gap: 10px;
 }
-.grid4{
+
+.links a {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.grid4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 55px;
 }
-.grid4 h4{
+
+.grid4 h4 {
     font-size: 24px;
     font-weight: 600;
 }
 
-.grid4 p{
+.grid4 p {
     font-size: 14px;
     width: 400px;
 }
-.Quick-links{
+
+.Quick-links {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.Quick-links ul{
+.Quick-links ul {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.Quick-links h3{
-    font-weight:400;
+.Quick-links h3 {
+    font-weight: 400;
 }
 
-.footer-contact{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.footer-contact h3{
-  font-weight:400;
+.footer-contact h3 {
+    font-weight: 400;
 }
 
-.contact-item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:14px;
-  color:#fff;
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #fff;
 }
 
-.contact-item i{
-  width:18px;
-  text-align:center;
-  color:#aaa;
+.contact-item i {
+    width: 18px;
+    text-align: center;
+    color: #aaa;
 }
-.copyrights{
+
+.copyrights {
     display: flex;
     justify-content: space-between;
     gap: 30px;
 }
 
-.copyrights a{
+.copyrights a {
     margin-right: 10px;
-        font-size: 13px;
+    font-size: 13px;
     font-weight: 600;
 }
 
-.copyrights p{
-        font-size: 12px;
+.copyrights p {
+    font-size: 12px;
     font-weight: 600;
+}
+/* ================= TABLET ================= */
+
+@media (max-width:1024px){
+
+.home{
+width:90vw;
+padding:60px 20px;
+}
+
+.hero{
+font-size:48px;
+width:100%;
+}
+
+main .underWeBuild{
+width:80%;
+}
+
+.services p{
+width:80%;
+}
+
+.services-container{
+gap:15px;
+}
+
+.service-card{
+flex:1 1 calc(50% - 20px);
+}
+
+.about-in{
+flex-direction:column;
+align-items:center;
+}
+
+.about-first,
+.about-second{
+width:90%;
+}
+
+.pot-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.footer-content{
+margin:0 60px;
+}
+
+.grid4{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+nav{
+padding:15px 20px;
+justify-content:space-between;
+}
+
+nav ul{
+display:none;
+}
+
+.nav-btn{
+display:none;
+}
+
+.hero{
+font-size:36px;
+line-height:1.2;
+}
+
+main .underWeBuild{
+width:100%;
+font-size:16px;
+}
+
+.buttons_2{
+flex-direction:column;
+align-items:center;
+}
+
+.buttons_2 a{
+width:200px;
+text-align:center;
+}
+
+.container{
+flex-direction:column;
+align-items:center;
+}
+
+.card{
+width:90%;
+height:auto;
+}
+
+.services-container{
+flex-direction:column;
+align-items:center;
+}
+
+.service-card{
+flex:1 1 100%;
+width:90%;
+}
+
+.pot-grid{
+grid-template-columns:1fr;
+}
+
+.portfolio{
+width:100%;
+}
+
+.about-first,
+.about-second{
+width:100%;
+}
+
+.portfolio-contain{
+margin:0;
+padding:0 20px;
+}
+
+.footer-content{
+margin:0 20px;
+}
+
+.grid4{
+grid-template-columns:1fr;
+gap:30px;
+}
+
+.copyrights{
+flex-direction:column;
+gap:10px;
+align-items:center;
+text-align:center;
+}
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width:480px){
+
+.hero{
+font-size:28px;
+}
+
+.services h2{
+font-size:28px;
+}
+
+.about-first h2{
+font-size:28px;
+}
+
+.action-cta h2{
+font-size:26px;
+}
+
+.buttons_2{
+gap:10px;
+}
+
 }
