@@ -15,7 +15,7 @@
 
 <div class="auth-container" id="auth-container">
 
-<div class="form-container sign-up">
+<div class="form-container auth-sign-up">
 <form>
 
 <h1>Create Account</h1>
@@ -39,7 +39,7 @@
 </div>
 
 
-<div class="form-container sign-in">
+<div class="form-container auth-sign-in">
 <form>
 
 <h1>Sign In</h1>
@@ -64,16 +64,16 @@
 </div>
 
 
-<div class="toggle-container">
-<div class="toggle">
+<div class="auth-toggle-container">
+<div class="auth-toggle">
 
-<div class="toggle-panel toggle-left">
+<div class="auth-toggle-panel auth-toggle-left">
 <h1>Welcome Back!</h1>
 <p>Enter your personal details to use all features</p>
 <button class="hidden" id="login">Sign In</button>
 </div>
 
-<div class="toggle-panel toggle-right">
+<div class="auth-toggle-panel auth-toggle-right">
 <h1>Hello, Friend!</h1>
 <p>Register with your personal details to use all features</p>
 <button class="hidden" id="register">Sign Up</button>
@@ -86,7 +86,7 @@
 
 <script>
 
-const container = document.getElementById('container');
+const container = document.getElementById('auth-container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
 

@@ -109,7 +109,7 @@ background:transparent;
 border:1px solid white;
 }
 
-.container form{
+.auth-container form{
 background:white;
 display:flex;
 align-items:center;
@@ -137,7 +137,7 @@ height:100%;
 transition:all 0.6s ease-in-out;
 }
 
-.sign-in{
+.auth-sign-in{
 left:0;
 width:50%;
 z-index:2;
@@ -147,14 +147,14 @@ z-index:2;
 transform:translateX(100%);
 }
 
-.sign-up{
+.auth-sign-up{
 left:0;
 width:50%;
 opacity:0;
 z-index:1;
 }
 
-.container.active .sign-up{
+.auth-container.active .auth-sign-up{
 transform:translateX(100%);
 opacity:1;
 z-index:5;
@@ -219,7 +219,7 @@ border-color:#0a66c2;
 transform:translateY(-4px) scale(1.1);
 }
 
-.toggle-container{
+.auth-toggle-container{
 position:absolute;
 top:0;
 left:50%;
@@ -231,12 +231,12 @@ border-radius:150px 0 0 100px;
 z-index:1000;
 }
 
-.container.active .toggle-container{
+.auth-container.active .auth-toggle-container{
 transform:translateX(-100%);
 border-radius:0 150px 100px 0;
 }
 
-.toggle{
+.auth-toggle{
 background:linear-gradient(135deg,#6c63ff,#4b5cff);
 color:white;
 position:relative;
@@ -247,11 +247,11 @@ transform:translateX(0);
 transition:all 0.6s ease-in-out;
 }
 
-.container.active .toggle{
+.auth-container.active .auth-toggle{
 transform:translateX(50%);
 }
 
-.toggle-panel{
+.auth-toggle-panel{
 position:absolute;
 width:50%;
 height:100%;
@@ -265,19 +265,19 @@ top:0;
 transition:all 0.6s ease-in-out;
 }
 
-.toggle-left{
+.auth-toggle-left{
 transform:translateX(-200%);
 }
 
-.container.active .toggle-left{
+.auth-container.active .auth-toggle-left{
 transform:translateX(0);
 }
 
-.toggle-right{
+.auth-toggle-right{
 right:0;
 transform:translateX(0);
 }
 
-.container.active .toggle-right{
+.auth-container.active .auth-toggle-right{
 transform:translateX(200%);
 }
