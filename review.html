@@ -1,162 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order Review | XYZSOlve</title>
 
-<link rel="stylesheet" href="Style/review.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Review | XYZSOlve</title>
+
+  <link rel="stylesheet" href="Style/review.css">
 </head>
 
 <body>
 
-<section class="review">
+  <section class="review">
 
-  <h1>Review Your Order</h1>
-  <p class="subtitle">Choose your package and customize your service</p>
+    <h1>Review Your Order</h1>
+    <p class="subtitle">Choose your package and customize your service</p>
 
-  <div class="layout">
+    <div class="layout">
 
-    <!-- LEFT SIDE -->
-    <div class="left">
+      <!-- LEFT SIDE -->
+      <div class="left">
 
-      <!-- SERVICE -->
-      <div class="card">
-        <h3>Selected Service</h3>
-        <p class="service">Web Development</p>
-        <p class="desc">Modern, responsive website tailored to your business</p>
-      </div>
-
-      <!-- PACKAGES -->
-      <div class="card">
-  <h3>Select Package</h3>
-
-  <!-- BASIC -->
-  <label class="pkg">
-    <input type="radio" name="pkg" checked>
-    <div class="pkg-header">
-      <span>Basic</span>
-      <strong>₹9,999</strong>
-    </div>
-
-    <div class="pkg-details">
-      <ul>
-        <li>Up to 3 pages</li>
-        <li>Responsive design</li>
-        <li>Basic SEO</li>
-        <li>Delivery: 7 days</li>
-      </ul>
-    </div>
-  </label>
-
-  <!-- STANDARD -->
-  <label class="pkg">
-    <input type="radio" name="pkg">
-    <div class="pkg-header">
-      <span>Standard</span>
-      <strong>₹24,999</strong>
-    </div>
-
-    <div class="pkg-details">
-      <ul>
-        <li>Up to 7 pages</li>
-        <li>Modern UI design</li>
-        <li>Advanced SEO</li>
-        <li>Delivery: 10–12 days</li>
-      </ul>
-    </div>
-  </label>
-
-  <!-- PREMIUM -->
-  <label class="pkg">
-    <input type="radio" name="pkg">
-    <div class="pkg-header">
-      <span>Premium</span>
-      <strong>₹49,999</strong>
-    </div>
-
-    <div class="pkg-details">
-      <ul>
-        <li>Unlimited pages</li>
-        <li>Custom design</li>
-        <li>Full SEO</li>
-        <li>Performance optimization</li>
-        <li>Delivery: 15 days</li>
-      </ul>
-    </div>
-  </label>
-
-</div>
-
-      <!-- ADDONS -->
-      <div class="card">
-        <h3>Add-ons</h3>
-
-        <label class="addon">
-          <input type="checkbox">
-          Extra Fast Delivery — ₹3,000
-        </label>
-
-        <label class="addon">
-          <input type="checkbox">
-          Additional Revisions — ₹1,500
-        </label>
-
-        <label class="addon">
-          <input type="checkbox">
-          Maintenance — ₹2,000
-        </label>
-
-      </div>
-
-    </div>
-
-    <!-- RIGHT SIDE -->
-    <div class="right">
-
-      <div class="summary">
-
-        <h3>Summary</h3>
-
-        <div class="row">
-          <span>Service</span>
-          <span>Web Dev</span>
+        <!-- SERVICE -->
+        <div class="card">
+          <h3>Selected Service</h3>
+          <p class="service">Web Development</p>
+          <p class="desc">Modern, responsive website tailored to your business</p>
         </div>
 
-        <div class="row">
-          <span>Package</span>
-          <span>₹9,999</span>
+        <!-- PACKAGES -->
+        <div class="card">
+          <h3>Select Package</h3>
+
+          <!-- BASIC -->
+          <label class="pkg">
+            <input type="radio" name="pkg" checked>
+            <div class="pkg-header">
+              <span>Basic</span>
+              <strong>₹9,999</strong>
+            </div>
+
+            <div class="pkg-details">
+              <ul>
+                <li>Up to 3 pages</li>
+                <li>Responsive design</li>
+                <li>Basic SEO</li>
+                <li>Delivery: 7 days</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- STANDARD -->
+          <label class="pkg">
+            <input type="radio" name="pkg">
+            <div class="pkg-header">
+              <span>Standard <span class="recommended-badge">Recommended</span></span>
+              <strong>₹24,999</strong>
+            </div>
+
+            <div class="pkg-details">
+              <ul>
+                <li>Up to 7 pages</li>
+                <li>Modern UI design</li>
+                <li>Advanced SEO</li>
+                <li>Delivery: 10–12 days</li>
+              </ul>
+            </div>
+          </label>
+
+          <!-- PREMIUM -->
+          <label class="pkg">
+            <input type="radio" name="pkg">
+            <div class="pkg-header">
+              <span>Premium</span>
+              <strong>₹49,999</strong>
+            </div>
+
+            <div class="pkg-details">
+              <ul>
+                <li>Unlimited pages</li>
+                <li>Custom design</li>
+                <li>Full SEO</li>
+                <li>Performance optimization</li>
+                <li>Delivery: 15 days</li>
+              </ul>
+            </div>
+          </label>
+
         </div>
 
-        <div class="row">
-          <span>Add-ons</span>
-          <span>₹0</span>
+        <!-- ADDONS -->
+        <div class="card">
+          <h3>Add-ons</h3>
+
+          <label class="addon">
+            <input type="checkbox">
+            Extra Fast Delivery — ₹3,000
+          </label>
+
+          <label class="addon">
+            <input type="checkbox">
+            Additional Revisions — ₹1,500
+          </label>
+
+          <label class="addon">
+            <input type="checkbox">
+            Maintenance — ₹2,000
+          </label>
+
         </div>
-
-        <div class="row total">
-          <span>Total</span>
-          <span>₹9,999</span>
-        </div>
-
-        <div class="actions">
-
-    <a href="service.html" class="edit-btn">
-      ← Edit Request
-    </a>
-
-    <a href="checkout.html" class="checkout-btn">
-      Proceed to Checkout
-    </a>
-
-  </div>
 
       </div>
 
+      <!-- RIGHT SIDE -->
+      <div class="right">
+
+        <div class="summary">
+
+          <h3>Summary</h3>
+
+          <div class="row">
+            <span>Service</span>
+            <span>Web Dev</span>
+          </div>
+
+          <div class="row">
+            <span>Package</span>
+            <span>₹9,999</span>
+          </div>
+
+          <div class="row">
+            <span>Add-ons</span>
+            <span>₹0</span>
+          </div>
+
+          <div class="row total">
+            <span>Total</span>
+            <span>₹9,999</span>
+          </div>
+
+          <div class="actions">
+
+            <a href="service.html" class="edit-btn">
+              ← Edit Request
+            </a>
+
+            <a href="checkout.html" class="checkout-btn">
+              Proceed to Checkout
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 </body>
+
 </html>
