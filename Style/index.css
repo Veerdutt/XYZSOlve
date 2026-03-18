@@ -119,6 +119,7 @@ nav button {
     justify-content: center;
     align-items: center;
     margin: auto;
+    padding: 60px 0;
     width: 64vw;
     flex-direction: column;
     position: relative;
