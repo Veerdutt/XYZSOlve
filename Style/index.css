@@ -556,8 +556,7 @@ main .second_button {
     font-weight: 600;
 }
 
-.primary,
-.secondary {
+.primary {
     border: 1px solid #ddd;
     color: #000;
 }
