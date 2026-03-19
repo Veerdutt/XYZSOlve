@@ -109,7 +109,7 @@
                         <label>Your Message</label>
                     </div>
 
-                    <button class="send-btn">Send Message</button>
+                    <button class="send-btn" id="message">Send Message</button>
 
                 </form>
             </div>
@@ -303,7 +303,10 @@
         loginBtn.addEventListener('click', () => {
             container.classList.remove("active");
         });
-
+        const message = document.getElementById('message');
+        message.addEventListener('click', () => {
+            alert("Your Message has been sent successfully");
+        });
     </script>
 </body>
 
