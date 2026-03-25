@@ -62,14 +62,35 @@ nav ul {
 }
 
 nav ul a {
+    position: relative;
+    padding: 5px;
     text-decoration: none;
     color: #333;
     font-weight: 500;
     transition: 0.3s;
 }
+nav ul a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:2px;
+background:#6366f1;
+transition:0.3s;
+}
 
-nav ul a:hover {
-    color: #4f46e5;
+nav ul a:hover::after{
+width:100%;
+}
+
+nav ul a.active{
+color:#6366f1;
+font-weight:600;
+}
+
+nav ul a.active::after{
+width:100%;
 }
 
 
