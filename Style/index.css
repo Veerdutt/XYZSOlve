@@ -121,20 +121,6 @@ nav button {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* another design of nav button */
-/* .nav-cta {
-  background: black;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.nav-cta:hover {
-  background: #222;
-} */
 .home {
     display: flex;
     justify-content: center;
@@ -330,7 +316,6 @@ main .second_button {
 .icon-placeholder {
     font-size: 2rem;
     color: #007bff;
-    /* Example color, adjust as needed */
     margin-bottom: 15px;
 }
 
@@ -344,7 +329,6 @@ main .second_button {
     font-size: 0.9rem;
     color: #666;
     flex-grow: 1;
-    /* Ensures cards have equal height if content varies */
 }
 
 .service-card ul {
@@ -363,11 +347,9 @@ main .second_button {
 
 .service-card li::before {
     content: '•';
-    /* Custom bullet point */
     position: absolute;
     left: 0;
     color: #007bff;
-    /* Bullet color */
 }
 
 .about-container {
@@ -425,8 +407,6 @@ main .second_button {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
-
-/* Right Side Cards */
 
 .about-second {
     flex: 1;
@@ -1070,9 +1050,15 @@ footer a {
     transition: 0.3s;
 }
 
-/* ================= TABLET ================= */
 
-@media (max-width:1024px) {
+/* ================= TABLET (≤1024px) ================= */
+
+@media (max-width: 1024px) {
+
+    nav {
+        padding: 18px 24px;
+        justify-content: space-between;
+    }
 
     .home {
         width: 90vw;
@@ -1082,6 +1068,10 @@ footer a {
     .hero {
         font-size: 48px;
         width: 100%;
+    }
+
+    main section span {
+        font-size: 48px;
     }
 
     main .underWeBuild {
@@ -1094,40 +1084,65 @@ footer a {
 
     .services-container {
         gap: 15px;
+        padding: 0 20px;
     }
 
     .service-card {
         flex: 1 1 calc(50% - 20px);
     }
 
+    .about-container {
+        padding: 60px 20px;
+    }
+
     .about-in {
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        gap: 40px;
     }
 
     .about-first,
     .about-second {
-        width: 90%;
+        width: 100%;
     }
 
     .pot-grid {
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: unset;
+    }
+
+    .portfolio {
+        width: 100%;
+    }
+
+    .portfolio-contain {
+        margin: 0 20px;
+        padding: 0 20px;
     }
 
     .footer-content {
-        margin: 0 60px;
+        margin: 0 40px;
     }
 
     .grid4 {
         grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 
+    .footer-xyz {
+        width: 100%;
+    }
+
+    .grid4 p {
+        width: 100%;
+    }
 }
 
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE (≤768px) ================= */
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
 
     nav {
         padding: 15px 20px;
@@ -1145,6 +1160,12 @@ footer a {
     .hero {
         font-size: 36px;
         line-height: 1.2;
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    main section span {
+        font-size: 36px;
     }
 
     main .underWeBuild {
@@ -1160,6 +1181,7 @@ footer a {
     .buttons_2 a {
         width: 200px;
         text-align: center;
+        justify-content: center;
     }
 
     .container {
@@ -1175,19 +1197,26 @@ footer a {
     .services-container {
         flex-direction: column;
         align-items: center;
+        padding: 0 20px;
     }
 
     .service-card {
         flex: 1 1 100%;
         width: 90%;
+        max-width: 500px;
     }
 
     .pot-grid {
         grid-template-columns: 1fr;
+        grid-template-rows: unset;
     }
 
     .portfolio {
         width: 100%;
+    }
+
+    .about-container {
+        padding: 60px 20px;
     }
 
     .about-first,
@@ -1209,6 +1238,14 @@ footer a {
         gap: 30px;
     }
 
+    .footer-xyz {
+        width: 100%;
+    }
+
+    .grid4 p {
+        width: 100%;
+    }
+
     .copyrights {
         flex-direction: column;
         gap: 10px;
@@ -1216,14 +1253,68 @@ footer a {
         text-align: center;
     }
 
+    /* Auth popup — stack forms vertically on mobile */
+    .auth-container {
+        min-height: 520px;
+    }
+
+    .auth-toggle-container {
+        display: none;
+    }
+
+    .auth-sign-in,
+    .auth-sign-up {
+        position: relative;
+        width: 100%;
+        left: 0;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .auth-sign-in {
+        opacity: 1;
+        z-index: 2;
+    }
+
+    .auth-sign-up {
+        opacity: 0;
+        z-index: 1;
+        height: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .auth-container.active .auth-sign-in {
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .auth-container.active .auth-sign-up {
+        opacity: 1;
+        z-index: 2;
+        height: auto;
+        overflow: visible;
+        pointer-events: auto;
+    }
+
+    .auth-container form {
+        padding: 30px 24px;
+        min-height: 480px;
+    }
 }
 
 
-/* ================= SMALL MOBILE ================= */
+/* ================= SMALL MOBILE (≤480px) ================= */
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
 
     .hero {
+        font-size: 28px;
+    }
+
+    main section span {
         font-size: 28px;
     }
 
@@ -1243,4 +1334,51 @@ footer a {
         gap: 10px;
     }
 
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .action-buttons a {
+        width: 200px;
+        text-align: center;
+    }
+
+    .footer-content {
+        margin: 0 10px;
+        padding: 20px 10px;
+    }
+
+    .copyrights .policy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .copyrights a {
+        margin-right: 0;
+    }
+}
+
+
+/* ================= EXTRA SMALL (≤360px) ================= */
+
+@media (max-width: 360px) {
+
+    nav {
+        padding: 12px 14px;
+    }
+
+    nav .logo a {
+        font-size: large;
+    }
+
+    .hero {
+        font-size: 22px;
+    }
+
+    main section span {
+        font-size: 22px;
+    }
 }
