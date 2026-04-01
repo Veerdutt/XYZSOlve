@@ -226,8 +226,8 @@
             </div>
         </div>
     </footer>
-    <!-- ==== Sign IN POPUP ===== -->
-     <div id="authPopup" class="popup">
+    <!-- ================= SIGN IN / SIGN UP POPUP ================= -->
+    <div id="authPopup" class="popup">
         <a href="#" class="popup-overlay"></a>
         <div class="popup-content">
             <a href="#" class="close">&times;</a>
@@ -287,39 +287,8 @@
             </div>
         </div>
     </div>
-    <script>
 
-        /* ===== Auth popup toggle ===== */
-        const container = document.getElementById('auth-container');
-        const registerBtn = document.getElementById('register');
-        const loginBtn = document.getElementById('login');
-
-        registerBtn.addEventListener('click', () => container.classList.add("active"));
-        loginBtn.addEventListener('click', () => container.classList.remove("active"));
-
-        // Mobile switch links
-        document.getElementById('goToSignUp').addEventListener('click', (e) => { e.preventDefault(); container.classList.add("active"); });
-        document.getElementById('goToSignIn').addEventListener('click', (e) => { e.preventDefault(); container.classList.remove("active"); });
-
-        /* ===== Hamburger menu ===== */
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobile-nav');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = hamburger.classList.toggle('open');
-            mobileNav.classList.toggle('open');
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        // Close mobile menu when any link inside it is clicked
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('open');
-                mobileNav.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
