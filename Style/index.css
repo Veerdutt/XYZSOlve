@@ -1033,7 +1033,8 @@ footer a {
     z-index: 300;
 }
 
-.popup:target {
+.popup:target,
+.popup.active {
     opacity: 1;
     visibility: visible;
 }
@@ -1377,6 +1378,121 @@ footer a {
     .mobile-switch {
         display: block;
     }
+}
+
+/* ================= IMPACT STATS SECTION ================= */
+.impact-stats {
+    background: linear-gradient(135deg, #111827, #1f2937);
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 60px;
+}
+
+.stat-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.stat-box {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #818cf8;
+    margin-bottom: 10px;
+}
+
+.stat-text {
+    font-size: 16px;
+    color: #d1d5db;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ================= TESTIMONIALS SECTION ================= */
+
+.ourTestimonials {
+    padding: 60px 0;
+    background-color: #fcfcfc;
+}
+
+.testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.testimonial-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 30px;
+    flex: 1 1 calc(33.333% - 60px);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stars {
+    color: #fbbf24;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.quote {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+    font-style: italic;
+    flex-grow: 1;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 20px;
+}
+
+.client-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.client-details h4 {
+    font-size: 16px;
+    color: #111827;
+    margin-bottom: 2px;
+}
+
+.client-details span {
+    font-size: 13px;
+    color: #6b7280;
 }
 
 /* ================= SMALL MOBILE (≤480px) ================= */

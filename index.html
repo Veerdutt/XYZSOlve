@@ -27,7 +27,7 @@
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contactus.html">Contact Us</a></li>
-            <li><a href="#authPopup">Sign In / Sign Up</a></li>
+            <li><a href="#authPopup" id="authLinkDesktop">Sign In / Sign Up</a></li>
         </ul>
 
         <a href="service.html" class="nav-btn">Start Project</a>
@@ -47,7 +47,7 @@
             <li><a href="about.html">About</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contactus.html">Contact Us</a></li>
-            <li><a href="#authPopup">Sign In / Sign Up</a></li>
+            <li><a href="#authPopup" id="authLinkMobile">Sign In / Sign Up</a></li>
         </ul>
         <a href="service.html" class="nav-btn mobile-cta">Start Project</a>
     </div>
@@ -227,6 +227,28 @@
             </div>
         </section>
 
+        <!-- ================= IMPACT STATS SECTION ================= -->
+        <section class="impact-stats">
+            <div class="stat-container">
+                <div class="stat-box">
+                    <h3 class="stat-number">100+</h3>
+                    <p class="stat-text">Projects Completed</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-number">50+</h3>
+                    <p class="stat-text">Happy Clients</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-number">10+</h3>
+                    <p class="stat-text">Expert Developers</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-number">5+</h3>
+                    <p class="stat-text">Years Experience</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ================= PORTFOLIO SECTION ================= -->
         <div id="portfolio"></div>
         <section class="ourPortfolio">
@@ -343,6 +365,59 @@
             </div>
         </section>
 
+            </div>
+        </section>
+
+        <!-- ================= TESTIMONIALS SECTION ================= -->
+        <div id="testimonials"></div>
+        <section class="ourTestimonials">
+            <div class="services" id="testimonials-heading">
+                <h2>What Our Clients Say</h2>
+                <p class="description">Don't just take our word for it. Here is what some of our past clients have to say about working with us.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="quote">"XYZSOlve completely transformed our online presence. The new e-commerce site they built increased our sales by 150% in just three months. Their team was professional, responsive, and exceeded our expectations."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="client-img">
+                        <div class="client-details">
+                            <h4>Sarah Johnson</h4>
+                            <span>CEO, Bloom Boutique</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="quote">"Working with XYZSOlve was a breeze. They understood our vision from day one and delivered a sleek, modern dashboard that our users love. Highly recommend their UI/UX and web development services!"</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="client-img">
+                        <div class="client-details">
+                            <h4>Michael Chen</h4>
+                            <span>Founder, TechLaunch</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="quote">"The team at XYZSOlve is highly skilled. They revamped our old website and optimized it for SEO. Within a few weeks, we started ranking on the first page of Google for our key search terms. Fantastic ROI."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="David Miller" class="client-img">
+                        <div class="client-details">
+                            <h4>David Miller</h4>
+                            <span>Marketing Director, RealEstate Pro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== ACTION CTA SECTION ===== -->
         <section class="action-cta">
             <h2>Need Help or Ready to Get Started?</h2>
@@ -419,7 +494,7 @@
             <a href="#" class="close">&times;</a>
             <div class="auth-container" id="auth-container">
                 <div class="form-container auth-sign-up">
-                    <form>
+                    <form id="signUpForm">
                         <h1>Create Account</h1>
                         <div class="social-icons">
                             <a href="#"><i class="fa-brands fa-google"></i></a>
@@ -428,15 +503,15 @@
                             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="text" placeholder="Name">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <button>Sign Up</button>
+                        <input type="text" id="signUpName" placeholder="Name" required>
+                        <input type="email" id="signUpEmail" placeholder="Email" required>
+                        <input type="password" id="signUpPassword" placeholder="Password" required>
+                        <button type="submit">Sign Up</button>
                         <p class="mobile-switch">Already have an account? <a href="#" id="goToSignIn">Sign In</a></p>
                     </form>
                 </div>
                 <div class="form-container auth-sign-in">
-                    <form>
+                    <form id="signInForm">
                         <h1>Sign In</h1>
                         <div class="social-icons">
                             <a href="#"><i class="fa-brands fa-google"></i></a>
@@ -445,10 +520,10 @@
                             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                         </div>
                         <span>or use your email password</span>
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
+                        <input type="email" id="signInEmail" placeholder="Email" required>
+                        <input type="password" id="signInPassword" placeholder="Password" required>
                         <a href="#">Forgot your password?</a>
-                        <button>Sign In</button>
+                        <button type="submit">Sign In</button>
                         <p class="mobile-switch">Don't have an account? <a href="#" id="goToSignUp">Sign Up</a></p>
                     </form>
                 </div>
