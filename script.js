@@ -14,31 +14,6 @@
       });
     });
         
-        /* ===== Auth popup toggle ===== */
-        const container = document.getElementById('auth-container');
-        const registerBtn = document.getElementById('register');
-        const loginBtn = document.getElementById('login');
-
-        registerBtn.addEventListener('click', () => container.classList.add("active"));
-        loginBtn.addEventListener('click', () => container.classList.remove("active"));
-
-        // Mobile switch links
-        const goToSignUp = document.getElementById('goToSignUp');
-const goToSignIn = document.getElementById('goToSignIn');
-
-if (goToSignUp) {
-    goToSignUp.addEventListener('click', (e) => {
-        e.preventDefault();
-        container.classList.add("active");
-    });
-}
-
-if (goToSignIn) {
-    goToSignIn.addEventListener('click', (e) => {
-        e.preventDefault();
-        container.classList.remove("active");
-    });
-}
         /* ===== Hamburger menu ===== */
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
