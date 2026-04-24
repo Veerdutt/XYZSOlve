@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('serviceRequestForm')) initServicePage();
     if (document.getElementById('proceedToCheckoutBtn')) initReviewPage();
     if (document.getElementById('payNowBtn')) initCheckoutPage();
+    if (document.getElementById('contactForm')) initContactPage();
 });
 
 /* ===== NAVIGATION LOGIC ===== */
@@ -88,6 +89,13 @@ function updateAuthUI() {
             authLinkMobile.innerHTML = `<i class="fas fa-user-circle"></i> Dashboard (${userDisplay})`;
             authLinkMobile.href = "dashboard.html";
         }
+
+        // Show Admin link if logged in as admin
+        if (currentUser.email === 'admin@xyzsolve.com') {
+            const adminLinkHtml = `<li><a href="admin.html" style="color: var(--accent-blue); font-weight: 800;"><i class="fas fa-user-shield"></i> Admin</a></li>`;
+            if (authLinkDesktop) authLinkDesktop.parentElement.insertAdjacentHTML('beforebegin', adminLinkHtml);
+            if (authLinkMobile) authLinkMobile.parentElement.insertAdjacentHTML('beforebegin', adminLinkHtml);
+        }
     }
 }
 
@@ -136,7 +144,15 @@ function initAuthPage() {
         });
     });
 
-    const getUsers = () => JSON.parse(localStorage.getItem('users')) || [];
+    const getUsers = () => {
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        // Ensure admin exists
+        if (!users.find(u => u.email === 'admin@xyzsolve.com')) {
+            users.push({ name: 'Admin User', email: 'admin@xyzsolve.com', password: 'admin123' });
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+        return users;
+    };
 
     if (signUpForm) {
         signUpForm.addEventListener('submit', (e) => {
@@ -411,10 +427,14 @@ function initCheckoutPage() {
         if (document.getElementById('checkoutEmail')) document.getElementById('checkoutEmail').value = user.email;
     }
 
+    let isProcessing = false;
+
     if (!payBtn) return;
     payBtn.addEventListener('click', (e) => {
         e.preventDefault();
         
+        if (isProcessing) return;
+
         // Validation logic
         let isValid = true;
         const fields = [
@@ -453,9 +473,13 @@ function initCheckoutPage() {
         const user = JSON.parse(localStorage.getItem('currentUser'));
         if (!user) { alert('Please sign in.'); window.location.href = 'signin.html'; return; }
 
+        isProcessing = true;
+        payBtn.textContent = 'Processing...';
+        payBtn.style.opacity = '0.7';
+
         const orderData = {
             userEmail: user.email,
-            clientName: name,
+            clientName: document.getElementById('checkoutName').value,
             clientPhone: document.getElementById('checkoutPhone').value,
             clientCompany: document.getElementById('checkoutCompany').value,
             service: pendingOrder ? pendingOrder.serviceType : 'Web Development Service',
@@ -636,13 +660,18 @@ function initProjectDetailPage() {
     if (document.getElementById('detPhone')) document.getElementById('detPhone').textContent = clientPhone;
     if (document.getElementById('detUserInitial')) document.getElementById('detUserInitial').textContent = clientName.charAt(0).toUpperCase();
 
-    // Addons
-    const invBtn = document.getElementById('invoiceBtn');
-    if (invBtn) {
-        invBtn.onclick = () => {
-            window.open(`invoice.html?id=${projectId}`, '_blank');
-        };
+    // Invoice Button Logic
+    const invoiceBtn = document.getElementById('invoiceBtn');
+    if (invoiceBtn) {
+        invoiceBtn.onclick = () => window.location.href = `invoice.html?id=${project.id}`;
     }
+
+    // Contact Support Button Logic
+    const contactBtn = document.getElementById('contactSupportBtn');
+    if (contactBtn) {
+        contactBtn.onclick = () => window.location.href = `contactus.html?orderId=${project.id}`;
+    }
+
     const addonsList = document.getElementById('detAddonsList');
     if (addonsList && project.addons && project.addons.length > 0) {
         addonsList.innerHTML = '';
@@ -749,3 +778,90 @@ function initInvoicePage() {
     document.getElementById('invSubtotal').textContent = project.price;
     document.getElementById('invTotal').textContent = project.price;
 }
+
+/* ================= CONTACT US LOGIC ================= */
+
+function initContactPage() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    // Auto-fill from URL parameters (e.g., from Project Workspace)
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('orderId');
+    if (orderId) {
+        const subjectSelect = document.getElementById('contactSubject');
+        const messageBox = document.getElementById('contactMessage');
+        if (subjectSelect) subjectSelect.value = 'Project Inquiry';
+        if (messageBox) messageBox.value = `Regarding Order #${orderId}:\n\n`;
+    }
+
+    // Auto-fill user info if logged in
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user) {
+        if (document.getElementById('contactName')) document.getElementById('contactName').value = user.name;
+        if (document.getElementById('contactEmail')) document.getElementById('contactEmail').value = user.email;
+    }
+
+    let isSending = false;
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (isSending) return;
+        isSending = true;
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnHtml = submitBtn.innerHTML;
+        if (submitBtn) {
+            submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.style.opacity = '0.7';
+        }
+
+        const ticket = {
+            id: 'TKT-' + Math.floor(10000 + Math.random() * 90000),
+            name: document.getElementById('contactName').value,
+            email: document.getElementById('contactEmail').value,
+            subject: document.getElementById('contactSubject').value,
+            message: document.getElementById('contactMessage').value,
+            date: new Date().toLocaleDateString(),
+            status: 'open'
+        };
+
+        const supportTickets = JSON.parse(localStorage.getItem('supportTickets')) || [];
+        supportTickets.push(ticket);
+        localStorage.setItem('supportTickets', JSON.stringify(supportTickets));
+
+        // Slight delay for premium feel
+        setTimeout(() => {
+            alert('Message sent successfully! Our support team will get back to you soon.');
+            contactForm.reset();
+            isSending = false;
+            if (submitBtn) {
+                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.style.opacity = '1';
+            }
+            if (orderId) window.location.href = `project-detail.html?id=${orderId}`;
+        }, 500);
+    });
+}
+
+
+
+function simulateStatusUpdate() {
+    const params = new URLSearchParams(window.location.search);
+    const projectId = params.get('id');
+    const newStatus = document.getElementById('simStatus').value;
+
+    let allProjects = JSON.parse(localStorage.getItem('allProjects')) || [];
+    const projectIndex = allProjects.findIndex(p => p.id === projectId);
+
+    if (projectIndex !== -1) {
+        allProjects[projectIndex].status = newStatus;
+        localStorage.setItem('allProjects', JSON.stringify(allProjects));
+        location.reload();
+    } else {
+        alert('Project not found to update.');
+    }
+}
+
+

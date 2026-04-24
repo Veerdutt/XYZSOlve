@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Command Center | XYZSOlve</title>
+    <link rel="stylesheet" href="Style/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyber-bg: #030712;
+            --cyber-card: #111827;
+            --cyber-border: rgba(255, 255, 255, 0.05);
+            --cyber-accent: #6366f1;
+            --cyber-cyan: #06b6d4;
+            --cyber-emerald: #10b981;
+        }
+
+        #admin-command-center {
+            background-color: var(--cyber-bg) !important;
+            color: #f3f4f6 !important;
+            font-family: 'Outfit', sans-serif !important;
+            margin: 0 !important;
+            display: flex !important;
+            min-height: 100vh !important;
+        }
+
+        /* Glass Sidebar */
+        #admin-command-center .cyber-sidebar {
+            width: 280px;
+            background: rgba(17, 24, 39, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border-right: 1px solid var(--cyber-border) !important;
+            padding: 40px 0 !important;
+            position: fixed !important;
+            height: 100vh !important;
+            z-index: 1000 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            top: 0 !important;
+            left: 0 !important;
+            border-radius: 0 !important;
+            /* KILL THE PILL */
+        }
+
+        #admin-command-center .cyber-logo {
+            position: relative !important;
+            padding: 0 30px !important;
+            font-size: 1.8rem !important;
+            font-weight: 900 !important;
+            letter-spacing: -1px !important;
+            margin-bottom: 60px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            background: transparent !important;
+            flex-shrink: 0 !important;
+            height: auto !important;
+            z-index: 10 !important;
+        }
+
+        #admin-command-center .cyber-nav {
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 5px !important;
+            padding: 0 15px !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            width: 100% !important;
+            justify-content: flex-start !important;
+            flex: 1 !important;
+            z-index: 10 !important;
+        }
+
+        #admin-command-center .cyber-nav a {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 15px !important;
+            padding: 16px 20px !important;
+            border-radius: 16px !important;
+            color: #9ca3af !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            white-space: nowrap !important;
+            margin: 0 !important;
+        }
+
+        #admin-command-center .cyber-nav a:hover,
+        #admin-command-center .cyber-nav a.active {
+            background: rgba(99, 102, 241, 0.1) !important;
+            color: white !important;
+            box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.2) !important;
+        }
+
+        /* Main Workspace */
+        #admin-command-center .cyber-main {
+            margin-left: 280px !important;
+            flex: 1 !important;
+            padding: 60px !important;
+            min-width: 0 !important;
+            background: var(--cyber-bg) !important;
+        }
+
+        /* Stat Grid */
+        .cyber-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .cyber-stat {
+            background: var(--cyber-card);
+            border: 1px solid var(--cyber-border);
+            border-radius: 32px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .cyber-stat:hover {
+            border-color: var(--cyber-accent);
+            transform: translateY(-5px);
+        }
+
+        .cyber-stat h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #9ca3af;
+            margin-bottom: 15px;
+        }
+
+        .cyber-stat h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .stat-glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--glow-color), transparent 70%);
+            top: -50px;
+            right: -50px;
+            opacity: 0.2;
+            filter: blur(30px);
+        }
+
+        /* Command Table */
+        .cyber-table-card {
+            background: var(--cyber-card);
+            border: 1px solid var(--cyber-border);
+            border-radius: 40px;
+            padding: 40px;
+        }
+
+        .cyber-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .cyber-table th {
+            text-align: left;
+            padding: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #6b7280;
+            border-bottom: 1px solid var(--cyber-border);
+        }
+
+        .cyber-table td {
+            padding: 25px 20px;
+            border-bottom: 1px solid var(--cyber-border);
+            font-size: 0.95rem;
+        }
+
+        .id-badge {
+            font-family: monospace;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: var(--cyber-accent);
+            font-weight: 700;
+        }
+
+        .status-pill {
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .pill-pending {
+            background: rgba(234, 179, 8, 0.1);
+            color: #eab308;
+        }
+
+        .pill-active {
+            background: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+        }
+
+        .pill-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: #34d399;
+        }
+
+        .cyber-select {
+            background: #1f2937;
+            border: 1px solid var(--cyber-border);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .cyber-select:focus {
+            border-color: var(--cyber-accent);
+        }
+
+        .cyber-btn {
+            background: var(--cyber-accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .cyber-btn:hover {
+            background: #4f46e5;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+    </style>
+</head>
+
+<body id="admin-command-center">
+    <aside class="cyber-sidebar">
+        <div class="cyber-logo">
+            <i class="fas fa-shield-halved" style="color: var(--cyber-accent);"></i>
+            <span>XYZSOlve</span>
+        </div>
+        <nav class="cyber-nav">
+            <a href="admin.html" class="active"><i class="fas fa-grid-2"></i> Command Overview</a>
+            <a href="#"><i class="fas fa-users-gear"></i> Client Master</a>
+            <a href="#"><i class="fas fa-chart-mixed"></i> Revenue Stream</a>
+            <a href="#supportInbox"><i class="fas fa-inbox"></i> Support Inbox</a>
+            <a href="index.html" style="margin-top: 50px; opacity: 0.6;"><i class="fas fa-arrow-up-right-from-square"></i> Exit to Site</a>
+        </nav>
+    </aside>
+
+    <main class="cyber-main">
+        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+            <div>
+                <p
+                    style="color: var(--cyber-accent); font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; margin-bottom: 8px;">
+                    Authorized Access Only</p>
+                <h1 style="font-size: 3rem; font-weight: 900; letter-spacing: -2px; margin: 0;">Admin Command Center
+                </h1>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <div
+                    style="background: var(--cyber-card); padding: 5px 20px; border-radius: 20px; border: 1px solid var(--cyber-border); display: flex; align-items: center; gap: 15px;">
+                    <i class="fas fa-search" style="opacity: 0.4;"></i>
+                    <input type="text" placeholder="Scan projects..."
+                        style="background: none; border: none; color: white; padding: 15px 0; outline: none; width: 250px;">
+                </div>
+                <button onclick="location.reload()" class="cyber-btn" style="width: 60px; padding: 0;"><i
+                        class="fas fa-rotate"></i></button>
+            </div>
+        </header>
+
+        <div class="cyber-grid">
+            <div class="cyber-stat">
+                <div class="stat-glow" style="--glow-color: var(--cyber-accent);"></div>
+                <h4>Global Projects</h4>
+                <h2 id="adminTotalProjects">0</h2>
+                <p style="font-size: 0.8rem; color: #10b981; font-weight: 800; margin-top: 10px;">+12% vs last month</p>
+            </div>
+            <div class="cyber-stat">
+                <div class="stat-glow" style="--glow-color: var(--cyber-cyan);"></div>
+                <h4>Total Revenue</h4>
+                <h2 id="adminTotalRevenue">₹0</h2>
+                <p style="font-size: 0.8rem; color: #10b981; font-weight: 800; margin-top: 10px;">+24% vs last month</p>
+            </div>
+            <div class="cyber-stat">
+                <div class="stat-glow" style="--glow-color: var(--cyber-emerald);"></div>
+                <h4>Active Pipelines</h4>
+                <h2 id="adminActiveProjects">0</h2>
+                <p style="font-size: 0.8rem; color: #6366f1; font-weight: 800; margin-top: 10px;">Live Execution</p>
+            </div>
+        </div>
+
+        <div class="cyber-table-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.5rem; font-weight: 900;">Master Deployment List</h3>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #6b7280; text-transform: uppercase;">Real-time
+                    Synchronization Active</span>
+            </div>
+            <table class="cyber-table">
+                <thead>
+                    <tr>
+                        <th>Deployment ID</th>
+                        <th>Client / Entity</th>
+                        <th>Core Service</th>
+                        <th>Current Status</th>
+                        <th>Management</th>
+                    </tr>
+                </thead>
+                <tbody id="adminProjectTable">
+                    <!-- Data Injected by admin.js -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="supportInbox" class="cyber-table-card" style="margin-top: 50px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.5rem; font-weight: 900;">Support & Inquiry Inbox</h3>
+                <span style="font-size: 0.75rem; font-weight: 800; color: var(--cyber-cyan); text-transform: uppercase;">Real-time Synchronization Active</span>
+            </div>
+            <table class="cyber-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>User Identity</th>
+                        <th>Subject</th>
+                        <th>Message Content</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="adminSupportTable">
+                    <!-- Data Injected by admin.js -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Cyber Reply Modal -->
+        <div id="replyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+            <div style="background: var(--cyber-card); width: 600px; border-radius: 24px; border: 1px solid var(--cyber-border); overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
+                <div style="padding: 20px 30px; border-bottom: 1px solid var(--cyber-border); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02);">
+                    <h3 style="margin: 0; font-weight: 800;"><i class="fas fa-paper-plane" style="color: var(--cyber-accent); margin-right: 10px;"></i> Dispatch Reply</h3>
+                    <button onclick="closeReplyModal()" style="background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 1.2rem;"><i class="fas fa-times"></i></button>
+                </div>
+                <div style="padding: 30px;">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #6b7280; margin-bottom: 8px; text-transform: uppercase;">To Client</label>
+                        <input type="text" id="replyTo" readonly style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--cyber-border); color: #9ca3af; padding: 12px 15px; border-radius: 12px; outline: none; font-family: inherit; font-weight: 600;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #6b7280; margin-bottom: 8px; text-transform: uppercase;">Subject Line</label>
+                        <input type="text" id="replySubject" style="width: 100%; background: #1f2937; border: 1px solid var(--cyber-border); color: white; padding: 12px 15px; border-radius: 12px; outline: none; font-family: inherit; font-weight: 600;">
+                    </div>
+                    <div style="margin-bottom: 30px;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #6b7280; margin-bottom: 8px; text-transform: uppercase;">Secure Message</label>
+                        <textarea id="replyMessage" rows="6" placeholder="Type your response here..." style="width: 100%; background: #1f2937; border: 1px solid var(--cyber-border); color: white; padding: 15px; border-radius: 12px; outline: none; font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+                    <div style="text-align: right;">
+                        <button onclick="sendReply()" id="sendReplyBtn" class="cyber-btn" style="width: 100%; font-size: 1.1rem; padding: 15px;"><i class="fas fa-lock"></i> Send Secure Reply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
