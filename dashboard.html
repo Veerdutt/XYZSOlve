@@ -26,7 +26,7 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contactus.html">Contact Us</a></li>
-            <li><a href="signin.html" id="authLinkDesktop">Sign In</a></li>
+            <li><a href="signin.html" id="authLinkDesktop">Sign In / Sign Up</a></li>
         </ul>
         <a href="service.html" class="nav-btn">Start Project</a>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -94,10 +94,12 @@
 
             <!-- Box 4: Recent Projects -->
             <div class="bento-box box-projects">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; position: relative;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; position: relative;">
                     <h3 style="font-weight: 800;">Recent Projects</h3>
                     <div class="dropdown-wrapper">
-                        <i class="fas fa-ellipsis-h" style="color: var(--text-sub); cursor: pointer;" id="filterToggle" title="Filter Projects"></i>
+                        <i class="fas fa-ellipsis-h" style="color: var(--text-sub); cursor: pointer;" id="filterToggle"
+                            title="Filter Projects"></i>
                         <div class="filter-dropdown" id="filterDropdown">
                             <button onclick="filterProjects('all')">All Projects</button>
                             <button onclick="filterProjects('active')">Active Only</button>
