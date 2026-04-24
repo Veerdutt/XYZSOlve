@@ -62,6 +62,32 @@ function initFAQ() {
     });
 }
 
+/* ================= GLOBAL HELPERS ================= */
+
+function bindPasswordToggles() {
+    const toggles = document.querySelectorAll('.toggle-password');
+    // Remove old event listeners by cloning to avoid duplicate bindings if called multiple times
+    toggles.forEach(toggle => {
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+        newToggle.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+            if (!input) return;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
+    });
+}
+
 /* ================= AUTHENTICATION LOGIC ================= */
 
 function updateAuthUI() {
@@ -125,24 +151,7 @@ function initAuthPage() {
     if (mobileRegister) mobileRegister.addEventListener('click', () => container.classList.add("active"));
     if (mobileLogin) mobileLogin.addEventListener('click', () => container.classList.remove("active"));
 
-    // Password Show/Hide Toggle
-    const toggles = document.querySelectorAll('.toggle-password');
-    toggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const input = document.getElementById(targetId);
-            
-            if (input.type === 'password') {
-                input.type = 'text';
-                this.classList.remove('fa-eye');
-                this.classList.add('fa-eye-slash');
-            } else {
-                input.type = 'password';
-                this.classList.remove('fa-eye-slash');
-                this.classList.add('fa-eye');
-            }
-        });
-    });
+    bindPasswordToggles();
 
     const getUsers = () => {
         let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -582,6 +591,65 @@ function initDashboardPage(filterStatus = 'all') {
         };
         document.onclick = () => dropdown.classList.remove('active');
     }
+
+    // 6. Bind Edit Profile Submit
+    const editProfileForm = document.getElementById('editProfileForm');
+    if (editProfileForm) {
+        // Prevent multiple bindings if called repeatedly
+        editProfileForm.onsubmit = handleEditProfileSubmit;
+    }
+}
+
+// ================= EDIT PROFILE LOGIC =================
+
+function openEditProfileModal() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (!user) return;
+    
+    document.getElementById('editProfileEmail').value = user.email;
+    document.getElementById('editProfileName').value = user.name;
+    document.getElementById('editProfilePassword').value = ''; // Leave blank by default
+    
+    document.getElementById('editProfileModal').classList.add('active');
+    
+    // Bind the password visibility eye icon
+    bindPasswordToggles();
+}
+
+function closeEditProfileModal() {
+    document.getElementById('editProfileModal').classList.remove('active');
+}
+
+function handleEditProfileSubmit(e) {
+    e.preventDefault();
+    
+    const newName = document.getElementById('editProfileName').value.trim();
+    const newPassword = document.getElementById('editProfilePassword').value;
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (!user || !newName) return;
+    
+    // 1. Update users array
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    const userIndex = users.findIndex(u => u.email === user.email);
+    
+    if (userIndex !== -1) {
+        users[userIndex].name = newName;
+        if (newPassword) {
+            users[userIndex].password = newPassword;
+        }
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+    
+    // 2. Update currentUser session
+    user.name = newName;
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    
+    // 3. Close modal and refresh UI
+    closeEditProfileModal();
+    initDashboardPage(); // Re-render the dashboard stats with new name
+    
+    alert('Profile updated successfully!');
 }
 
 function filterProjects(status) {

@@ -106,7 +106,7 @@ body.about-page {
 /* Values Box */
 .values-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
 .value { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 1.1rem; }
-.value i { color: #10b981; }
+.value i { color: #06b6d4; }
 
 /* Vision Box */
 .vision-icon { font-size: 2.5rem; color: var(--accent-purple); margin-bottom: 20px; }

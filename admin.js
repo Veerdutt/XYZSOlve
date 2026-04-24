@@ -369,8 +369,8 @@ function initRevenueChart() {
 
     // Generate neon gradient for line
     const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(16, 185, 129, 0.5)'); // Emerald Green
-    gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+    gradient.addColorStop(0, 'rgba(6, 182, 212, 0.5)'); // Cyber Cyan
+    gradient.addColorStop(1, 'rgba(6, 182, 212, 0)');
 
     // Since all local storage data is "today", generate a simulated historical curve
     // and append actual live data to the end to make it look professional immediately.
@@ -386,28 +386,25 @@ function initRevenueChart() {
             datasets: [{
                 label: 'Revenue Trajectory (in ₹ Lakhs)',
                 data: dataPoints,
-                borderColor: '#10b981', // Emerald border
-                backgroundColor: gradient, // Gradient fill
-                borderWidth: 3,
-                pointBackgroundColor: '#1f2937',
-                pointBorderColor: '#10b981',
-                pointBorderWidth: 3,
-                pointRadius: 6,
-                pointHoverRadius: 8,
+                borderColor: '#06b6d4', // Cyan border
+                backgroundColor: gradient, // Cyan Gradient fill
                 fill: true,
-                tension: 0.4 // Smooth bezier curves
+                tension: 0.4,
+                borderWidth: 3,
+                pointBackgroundColor: '#06b6d4',
+                pointBorderColor: '#06b6d4',
+                pointHoverRadius: 6,
+                pointRadius: 4
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    display: false
-                },
+                legend: { display: false },
                 tooltip: {
                     backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                    titleColor: '#10b981',
+                    titleColor: '#06b6d4',
                     bodyColor: '#f1f5f9',
                     bodyFont: { weight: 'bold', size: 14 },
                     padding: 15,
