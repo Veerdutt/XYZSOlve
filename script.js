@@ -672,23 +672,78 @@ function initProjectDetailPage() {
         contactBtn.onclick = () => window.location.href = `contactus.html?orderId=${project.id}`;
     }
 
+    // Initialize Project Chat
+    initProjectChat(project.id);
+
     const addonsList = document.getElementById('detAddonsList');
     if (addonsList && project.addons && project.addons.length > 0) {
         addonsList.innerHTML = '';
         project.addons.forEach(addon => {
             const span = document.createElement('span');
-            span.style.background = 'rgba(99, 102, 241, 0.1)';
-            span.style.color = 'var(--accent-blue)';
-            span.style.padding = '6px 15px';
-            span.style.borderRadius = '100px';
-            span.style.fontSize = '0.85rem';
-            span.style.fontWeight = '700';
+            span.className = 'addon-tag';
             span.textContent = addon;
             addonsList.appendChild(span);
         });
-    } else {
-        addonsList.innerHTML = '<span style="color: var(--text-sub);">No extra add-ons selected.</span>';
+    } else if (addonsList) {
+        addonsList.innerHTML = '<span style="color: var(--text-muted); font-size: 0.9rem;">Standard Infrastructure</span>';
     }
+}
+
+function initProjectChat(projectId) {
+    const chatHistory = document.getElementById('chatHistory');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendChatBtn');
+
+    if (!chatHistory || !chatInput || !sendBtn) return;
+
+    function loadChat() {
+        const chats = JSON.parse(localStorage.getItem(`projectChat_${projectId}`)) || [];
+        chatHistory.innerHTML = '';
+        
+        if (chats.length === 0) {
+            chatHistory.innerHTML = `
+                <div style="text-align: center; color: var(--text-muted); margin-top: auto; margin-bottom: auto; padding: 20px;">
+                    <i class="fas fa-robot" style="font-size: 2rem; opacity: 0.3; margin-bottom: 10px;"></i>
+                    <p style="font-size: 0.85rem;">This is the start of your secure communication with the admin regarding this project.</p>
+                </div>
+            `;
+            return;
+        }
+
+        chats.forEach(msg => {
+            const bubble = document.createElement('div');
+            bubble.className = `chat-msg ${msg.sender}`;
+            bubble.innerHTML = `
+                ${msg.text}
+                <span class="chat-time" style="color: ${msg.sender === 'client' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.5)'}">${msg.timestamp}</span>
+            `;
+            chatHistory.appendChild(bubble);
+        });
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    loadChat();
+
+    function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        const chats = JSON.parse(localStorage.getItem(`projectChat_${projectId}`)) || [];
+        chats.push({
+            sender: 'client',
+            text: text,
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+        
+        localStorage.setItem(`projectChat_${projectId}`, JSON.stringify(chats));
+        chatInput.value = '';
+        loadChat();
+    }
+
+    sendBtn.onclick = sendMessage;
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
 }
 
 function initContactPage() {

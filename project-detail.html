@@ -227,6 +227,36 @@
 
         .btn-primary:hover { background: #4f46e5; }
         .btn-secondary:hover { background: #f1f5f9; }
+
+        /* Chat Bubbles */
+        .chat-msg {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            position: relative;
+        }
+        .chat-msg.client {
+            background: var(--accent-primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-msg.admin {
+            background: #f1f5f9;
+            color: var(--text-dark);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+        .chat-time {
+            font-size: 0.65rem;
+            opacity: 0.7;
+            margin-top: 4px;
+            display: block;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -329,6 +359,23 @@
                     <h4 style="font-weight: 800; margin-bottom: 20px;"><i class="fas fa-layer-group" style="color: var(--accent-primary); margin-right: 10px;"></i> Selected Infrastructure</h4>
                     <div id="detAddonsList" style="display: flex; flex-wrap: wrap; gap: 10px;">
                         <!-- Addons injected here -->
+                    </div>
+                </div>
+
+                <!-- Direct Project Chat Pod -->
+                <div class="pod" style="display: flex; flex-direction: column; height: 500px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--pod-border); padding-bottom: 15px;">
+                        <h4 style="font-weight: 800; margin: 0;"><i class="fas fa-comments" style="color: var(--accent-primary); margin-right: 10px;"></i> Direct Project Chat</h4>
+                        <span style="font-size: 0.75rem; font-weight: 700; background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">Priority Channel</span>
+                    </div>
+                    
+                    <div id="chatHistory" style="flex: 1; overflow-y: auto; padding-right: 10px; display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
+                        <!-- Chat messages injected by JS -->
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-top: auto;">
+                        <input type="text" id="chatInput" placeholder="Type your message to the Admin..." style="flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #cbd5e1; outline: none; font-family: inherit; font-size: 0.95rem;">
+                        <button id="sendChatBtn" class="action-btn btn-primary" style="width: auto; padding: 0 25px;"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
