@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | XYZSOlve</title>
 
-    <link rel="stylesheet" href="Style/signin.css">
+    <link rel="stylesheet" href="Style/signin.css?v=1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -16,7 +16,7 @@
     <div class="auth-container" id="auth-container">
 
         <div class="form-container auth-sign-up">
-            <form>
+            <form id="signUpForm">
 
                 <h1>Create Account</h1>
 
@@ -29,18 +29,22 @@
 
                 <span>or use your email for registration</span>
 
-                <input type="name" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <input type="text" id="signUpName" placeholder="Name" required>
+                <input type="email" id="signUpEmail" placeholder="Email" required>
+                <div class="password-group">
+                    <input type="password" id="signUpPassword" placeholder="Password" required>
+                    <i class="fas fa-eye toggle-password" data-target="signUpPassword"></i>
+                </div>
 
-                <button>Sign Up</button>
+                <button type="submit">Sign Up</button>
+                <p class="mobile-only">Already have an account? <span id="mobile-login" style="color: #6c63ff; cursor: pointer; font-weight: 700;">Sign In</span></p>
 
             </form>
         </div>
 
 
         <div class="form-container auth-sign-in">
-            <form>
+            <form id="signInForm">
 
                 <h1>Sign In</h1>
 
@@ -53,12 +57,16 @@
 
                 <span>or use your email password</span>
 
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <input type="email" id="signInEmail" placeholder="Email" required>
+                <div class="password-group">
+                    <input type="password" id="signInPassword" placeholder="Password" required>
+                    <i class="fas fa-eye toggle-password" data-target="signInPassword"></i>
+                </div>
 
                 <a href="#">Forgot your password?</a>
 
-                <button>Sign In</button>
+                <button type="submit">Sign In</button>
+                <p class="mobile-only">Don't have an account? <span id="mobile-register" style="color: #6c63ff; cursor: pointer; font-weight: 700;">Sign Up</span></p>
 
             </form>
         </div>
@@ -84,22 +92,7 @@
 
     </div>
 
-    <script>
-
-        const container = document.getElementById('auth-container');
-        const registerBtn = document.getElementById('register');
-        const loginBtn = document.getElementById('login');
-
-        registerBtn.addEventListener('click', () => {
-            container.classList.add("active");
-        });
-
-        loginBtn.addEventListener('click', () => {
-            container.classList.remove("active");
-        });
-
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>

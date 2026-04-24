@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | XYZSOlve</title>
+    <link rel="stylesheet" href="Style/index.css">
+    <link rel="stylesheet" href="Style/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script>
+        if (!localStorage.getItem('currentUser')) window.location.href = 'signin.html';
+    </script>
+</head>
+
+<body class="dashboard-page">
+
+    <nav>
+        <div class="logo">
+            <img class="logo_img" src="images/logo.png" alt="">
+            <a href="index.html">XYZSOlve</a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="signin.html" id="authLinkDesktop">Sign In</a></li>
+        </ul>
+        <a href="service.html" class="nav-btn">Start Project</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-nav" id="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="signin.html" id="authLinkMobile">Sign In</a></li>
+        </ul>
+    </div>
+
+    <div class="dash-wrapper">
+
+        <!-- Minimal Sidebar -->
+        <aside class="dash-sidebar">
+            <ul class="side-nav">
+                <li><a href="#" class="active"><i class="fas fa-grid-2"></i> Dashboard</a></li>
+                <li><a href="service.html"><i class="fas fa-rocket"></i> Services</a></li>
+                <li><a href="contactus.html"><i class="fas fa-life-ring"></i> Support</a></li>
+                <li style="margin-top: auto;"><a href="#" onclick="handleLogout(event)" class="logout-link"><i
+                            class="fas fa-power-off"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Bento Grid Main Content -->
+        <main class="bento-grid">
+
+            <!-- Box 1: Profile -->
+            <div class="bento-box box-profile">
+                <div class="profile-bento">
+                    <div class="avatar-bento" id="userInitial">U</div>
+                    <div class="details">
+                        <span style="color: var(--text-sub); font-size: 0.9rem;">Welcome back,</span>
+                        <h2 id="userName" style="font-size: 1.8rem; margin-top: 4px;">User Name</h2>
+                        <p id="userEmail" style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">
+                            user@example.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 2: Stats Projects -->
+            <div class="bento-box box-stats-1">
+                <div class="stat-bento">
+                    <div class="icon"><i class="fas fa-briefcase"></i></div>
+                    <p id="statProjects">0</p>
+                    <span style="color: var(--text-sub); font-size: 0.8rem; font-weight: 700;">PROJECTS</span>
+                </div>
+            </div>
+
+            <!-- Box 3: Stats Messages -->
+            <div class="bento-box box-stats-2">
+                <div class="stat-bento">
+                    <div class="icon" style="color: var(--accent-purple); background: rgba(168, 85, 247, 0.05);"><i
+                            class="fas fa-clock"></i></div>
+                    <p id="pendingOrders">0</p>
+                    <span style="color: var(--text-sub); font-size: 0.8rem; font-weight: 700;">PENDING</span>
+                </div>
+            </div>
+
+            <!-- Box 4: Recent Projects -->
+            <div class="bento-box box-projects">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; position: relative;">
+                    <h3 style="font-weight: 800;">Recent Projects</h3>
+                    <div class="dropdown-wrapper">
+                        <i class="fas fa-ellipsis-h" style="color: var(--text-sub); cursor: pointer;" id="filterToggle" title="Filter Projects"></i>
+                        <div class="filter-dropdown" id="filterDropdown">
+                            <button onclick="filterProjects('all')">All Projects</button>
+                            <button onclick="filterProjects('active')">Active Only</button>
+                            <button onclick="filterProjects('pending')">Pending Only</button>
+                            <button onclick="filterProjects('success')">Completed</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="projectList">
+                    <!-- Projects injected here -->
+                    <div style="text-align: center; padding: 2rem; color: var(--text-sub);">
+                        <i class="fas fa-box-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>No active projects found.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 5: Quick Actions -->
+            <div class="bento-box box-actions">
+                <h3 style="font-weight: 800; margin-bottom: 1.5rem;">Actions</h3>
+                <button class="action-btn-bento primary" onclick="window.location.href='service.html'">
+                    <i class="fas fa-plus"></i> New Request
+                </button>
+                <button class="action-btn-bento" onclick="window.location.href='faq.html'">
+                    <i class="fas fa-question-circle"></i> Help
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

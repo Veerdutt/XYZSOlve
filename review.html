@@ -21,15 +21,15 @@
 
         <div class="card">
           <h3>Selected Service</h3>
-          <p class="service">Web Development</p>
-          <p class="desc">Modern, responsive website tailored to your business</p>
+          <p class="service" id="displayService">Web Development</p>
+          <p class="desc" id="displayDesc">Modern, responsive website tailored to your business</p>
         </div>
 
         <div class="card">
           <h3>Select Package</h3>
 
           <label class="pkg">
-            <input type="radio" name="pkg" checked>
+            <input type="radio" name="pkg" value="Basic" data-price="9999" checked>
             <div class="pkg-header">
               <span>Basic</span>
               <strong>₹9,999</strong>
@@ -46,7 +46,7 @@
           </label>
 
           <label class="pkg">
-            <input type="radio" name="pkg">
+            <input type="radio" name="pkg" value="Standard" data-price="24999">
             <div class="pkg-header">
               <span>Standard <span class="recommended-badge">Recommended</span></span>
               <strong>₹24,999</strong>
@@ -63,7 +63,7 @@
           </label>
 
           <label class="pkg">
-            <input type="radio" name="pkg">
+            <input type="radio" name="pkg" value="Premium" data-price="49999">
             <div class="pkg-header">
               <span>Premium</span>
               <strong>₹49,999</strong>
@@ -86,17 +86,17 @@
           <h3>Add-ons</h3>
 
           <label class="addon">
-            <input type="checkbox">
+            <input type="checkbox" value="Fast Delivery" data-price="3000">
             Extra Fast Delivery — ₹3,000
           </label>
 
           <label class="addon">
-            <input type="checkbox">
+            <input type="checkbox" value="Additional Revisions" data-price="1500">
             Additional Revisions — ₹1,500
           </label>
 
           <label class="addon">
-            <input type="checkbox">
+            <input type="checkbox" value="Maintenance" data-price="2000">
             Maintenance — ₹2,000
           </label>
 
@@ -112,22 +112,22 @@
 
           <div class="row">
             <span>Service</span>
-            <span>Web Dev</span>
+            <span id="summaryService">Web Dev</span>
           </div>
 
           <div class="row">
             <span>Package</span>
-            <span>₹9,999</span>
+            <span id="summaryPackagePrice">₹9,999</span>
           </div>
 
           <div class="row">
             <span>Add-ons</span>
-            <span>₹0</span>
+            <span id="summaryAddonsPrice">₹0</span>
           </div>
 
           <div class="row total">
             <span>Total</span>
-            <span>₹9,999</span>
+            <span id="summaryTotalPrice">₹9,999</span>
           </div>
 
           <div class="actions">
@@ -136,7 +136,7 @@
               ← Edit Request
             </a>
 
-            <a href="checkout.html" class="checkout-btn">
+            <a href="#" id="proceedToCheckoutBtn" class="checkout-btn">
               Proceed to Checkout
             </a>
 
@@ -150,6 +150,12 @@
 
   </section>
 
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof initReviewPage === 'function') initReviewPage();
+    });
+  </script>
 </body>
 
 </html>
