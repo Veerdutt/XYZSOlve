@@ -98,14 +98,30 @@ function initAdminPage() {
                 <td><div style="font-size: 0.85rem; max-width: 300px; color: #9ca3af;">${ticket.message}</div></td>
                 <td><span class="status-pill ${ticket.status === 'replied' ? 'pill-success' : 'pill-pending'}">${ticket.status}</span></td>
                 <td>
-                    <button onclick="openReplyModal('${ticket.id}')" 
-                       style="background: var(--cyber-accent); color: white; padding: 6px 12px; border: none; border-radius: 8px; font-family: inherit; font-size: 0.75rem; font-weight: 800; display: inline-block; cursor: pointer; transition: 0.2s;">
-                        <i class="fas fa-reply"></i> Reply
-                    </button>
+                    <div style="display: flex; gap: 8px;">
+                        <button onclick="openReplyModal('${ticket.id}')" 
+                           style="background: var(--cyber-accent); color: white; padding: 6px 12px; border: none; border-radius: 8px; font-family: inherit; font-size: 0.75rem; font-weight: 800; display: inline-block; cursor: pointer; transition: 0.2s;">
+                            <i class="fas fa-reply"></i> Reply
+                        </button>
+                        ${ticket.status === 'replied' ? `
+                        <button onclick="deleteTicket('${ticket.id}')" 
+                           style="background: #ef4444; color: white; padding: 6px 12px; border: none; border-radius: 8px; font-family: inherit; font-size: 0.75rem; font-weight: 800; display: inline-block; cursor: pointer; transition: 0.2s; box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);" title="Delete Inquiry">
+                            <i class="fas fa-trash-can"></i>
+                        </button>` : ''}
+                    </div>
                 </td>
             `;
             supportTable.appendChild(tr);
         });
+    }
+}
+
+function deleteTicket(id) {
+    if (confirm("Are you sure you want to permanently delete this inquiry?")) {
+        let allTickets = JSON.parse(localStorage.getItem('supportTickets')) || [];
+        allTickets = allTickets.filter(t => t.id !== id);
+        localStorage.setItem('supportTickets', JSON.stringify(allTickets));
+        initAdminPage(); // Refresh table
     }
 }
 
